@@ -15,6 +15,7 @@ This docker container can be used to quickly get a
 This container has the following WeeWX extensions installed:
 
 * [mqtt](https://github.com/weewx/weewx/wiki/mqtt)
+* [weatherflowUDP](https://github.com/captain-coredump/weatherflow-udp)
 
 ## Usage ##
 
