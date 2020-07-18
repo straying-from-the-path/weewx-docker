@@ -20,6 +20,7 @@ COPY src/hashes requirements.txt ./
 # Download sources and verify hashes
 RUN wget -O "${ARCHIVE}" "http://www.weewx.com/downloads/released_versions/${ARCHIVE}"
 RUN wget -O weewx-mqtt.zip https://github.com/matthewwall/weewx-mqtt/archive/master.zip
+RUN wget- O weatherflow-udp.zip https://github.com/captain-coredump/weatherflow-udp/archive/master.zip
 RUN sha256sum -c < hashes
 
 # WeeWX setup
@@ -34,6 +35,7 @@ RUN pip install --no-cache --requirement requirements.txt
 WORKDIR ${WEEWX_HOME}
 
 RUN bin/wee_extension --install /tmp/weewx-mqtt.zip
+RUN bin/wee_extension --install /tmp/weatherflow-udp.zip
 COPY src/entrypoint.sh src/version.txt ./
 
 FROM --platform=$TARGETPLATFORM python:3-alpine as stage-2
